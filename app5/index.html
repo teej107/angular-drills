@@ -1,9 +1,39 @@
-<html>
-	<body>
-		Something
-				<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-		<script src="app.js"></script>
-		<script src="controller.js"></script>
-		<script src="service.js"></script>
-	</body>
+<html ng-app="wordSearch">
+<head>
+    <title>Word Search</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body ng-controller="wordCtrl">
+<div id="setup">
+    <form>
+        <input ng-model="wordInput">
+        <button ng-click="addWord()">Add</button>
+    </form>
+    <div>
+        <p id="padding-textbox">Padding:</p>
+        <input type="number" ng-model="padding" placeholder="0">
+    </div>
+</div>
+<button ng-click="create()">Create</button>
+<div ng-show="wordSearch.length > 0">
+    <table id="wordSearch">
+        <tr ng-repeat="row in wordSearch">
+            <td ng-repeat="col in row track by $index">
+                <p>{{ col }}</p>
+            </td>
+        </tr>
+    </table>
+    <hr>
+</div>
+<div>
+    <div class="word-div" ng-repeat="word in words">
+        <p class="word">{{ word }}</p>
+        <button ng-hide="wordSearch.length > 0" ng-click="removeWord(word)">Remove</button>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<script src="app.js"></script>
+<script src="controller.js"></script>
+<script src="service.js"></script>
+</body>
 </html>

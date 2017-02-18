@@ -1,9 +1,18 @@
 <html ng-app="apiApp">
-	<body>
-		
-				<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-		<script src="app.js"></script>
-		<script src="controller.js"></script>
-		<script src="service.js"></script>
-	</body>
+<body ng-controller="mainController">
+    <p>Search Pokemon</p>
+    <input ng-model="input">
+    <button ng-click="searchPokemon()">Search</button>
+    <div>
+        <h1>{{ pokemon.name }}</h1>
+        <img ng-src="{{ pokemon.sprites.front_default }}">
+        <div ng-repeat="types in pokemon.types">
+            <p>{{ types.type.name }}</p>
+        </div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<script src="app.js"></script>
+<script src="controller.js"></script>
+<script src="service.js"></script>
+</body>
 </html>
